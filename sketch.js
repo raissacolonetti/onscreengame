@@ -33,7 +33,7 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(768, 768);
+    createCanvas(windowWidth,windowWidth);
     background.loop();
     background.amp(0.05);
 }
@@ -45,22 +45,22 @@ function draw() {
   }
   switch(DiceNumber) {
   case 0:
-    image(img01, 0, 0);
+    image(img01, 0, 0, width, height);
     break;
   case 1:
-    image(img02, 0, 0);
+    image(img02, 0, 0, width, height);
     break;
   case 2:
-    image(img03, 0, 0);
+    image(img03, 0, 0, width, height);
     break;
   case 3:
-    image(img04, 0, 0);
+    image(img04, 0, 0, width, height);
     break;
   case 4:
-    image(img05, 0, 0);
+    image(img05, 0, 0, width, height);
     break;
   case 5:
-    image(img06, 0, 0);
+    image(img06, 0, 0, width, height);
     break;
   }
     
