@@ -66,7 +66,7 @@ function draw() {
     
 }
 
-function keyPressed() {
+function mouseClicked() {
   GameOn = !GameOn;
   if (!GameOn) {
     switch (DiceNumber) {
