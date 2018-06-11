@@ -1,4 +1,3 @@
-let DiceNumber;
 let img01;
 let img02;
 let img03;
@@ -67,6 +66,35 @@ function draw() {
 }
 
 function mouseClicked() {
+  GameOn = !GameOn;
+  if (!GameOn) {
+    switch (DiceNumber) {
+
+    case 0:
+      file01.play();
+      break;
+    case 1:
+      file02.play();
+      break;
+    case 2:
+      file03.play();
+      break;
+    case 3:
+      file04.play();
+      break;
+    case 4:
+      file05.play();
+      break;
+    case 5:
+      file06.play();
+      break;
+    }
+  }
+}
+
+}
+
+function touchStarted() {
   GameOn = !GameOn;
   if (!GameOn) {
     switch (DiceNumber) {
