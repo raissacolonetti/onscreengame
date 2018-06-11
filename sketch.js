@@ -33,14 +33,15 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(windowWidth,windowWidth);
+    let windowSize = Math.min(displayWidth, displayHeight);
+    createCanvas(windowSize*0.9,windowSize*0.9);
     backgroundSound.loop();
     backgroundSound.amp(0.05);
 }
 
 function draw() {
     fill(255);
-    rect(0,0,windowWidth, windowHeight);
+    rect(0,0,width, width);
     
     
   switch(DiceNumber) {
