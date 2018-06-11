@@ -11,6 +11,7 @@ let file04;
 let file05;
 let file06;
 let background;
+let DiceNumber = 0;
 
 let GameOn = true;
 
@@ -28,20 +29,20 @@ function preload() {
   file04 = loadSound("./data/voice_md-04.mp3");
   file05 = loadSound("./data/voice_md-05.mp3");
   file06 = loadSound("./data/voice_md-06.mp3");
-  background = loadSound("./data/background.mp3");
+  backgroundSound = loadSound("./data/background.mp3");
 }
 
 function setup() {
     createCanvas(windowWidth,windowWidth);
-    background.loop();
-    background.amp(0.05);
+    backgroundSound.loop();
+    backgroundSound.amp(0.05);
 }
 
 function draw() {
-  if(frameCount%40 !== 0) return;
-  if (GameOn) {
-    DiceNumber = Math.floor(Math.random()*6);
-  }
+    fill(255);
+    rect(0,0,windowWidth, windowHeight);
+    
+    
   switch(DiceNumber) {
   case 0:
     image(img01, 0, 0, width, height);
@@ -62,39 +63,59 @@ function draw() {
     image(img06, 0, 0, width, height);
     break;
   }
+    if(GameOn) {
+    fill(100);    
+    } else {
+        fill(255,0,0);
+    }
     
-}
-
-function mouseClicked() {
-  GameOn = !GameOn;
-  if (!GameOn) {
-    switch (DiceNumber) {
-
-    case 0:
-      file01.play();
-      break;
-    case 1:
-      file02.play();
-      break;
-    case 2:
-      file03.play();
-      break;
-    case 3:
-      file04.play();
-      break;
-    case 4:
-      file05.play();
-      break;
-    case 5:
-      file06.play();
-      break;
-    }
+    noStroke();
+    if(increaseSize) {
+      size += 5;
+      ellipse(mouseX, mouseY, size, size);
   }
-}
+    if(size > 50) {
+        size = 0;
+        increaseSize = false;
+    }
+    if(frameCount%40 !== 0) return;
+  if (GameOn) {
+    DiceNumber = Math.floor(Math.random()*6);
+  }
 
 }
 
+//function mouseClicked() {
+//  GameOn = !GameOn;
+//  if (!GameOn) {
+//    switch (DiceNumber) {
+//
+//    case 0:
+//      file01.play();
+//      break;
+//    case 1:
+//      file02.play();
+//      break;
+//    case 2:
+//      file03.play();
+//      break;
+//    case 3:
+//      file04.play();
+//      break;
+//    case 4:
+//      file05.play();
+//      break;
+//    case 5:
+//      file06.play();
+//      break;
+//    }
+//  }
+//}
+let increaseSize = false;
+let size = 0;
 function touchStarted() {
+    if(increaseSize) return;
+    increaseSize = true;
   GameOn = !GameOn;
   if (!GameOn) {
     switch (DiceNumber) {
@@ -119,4 +140,5 @@ function touchStarted() {
       break;
     }
   }
+    return false;
 }
